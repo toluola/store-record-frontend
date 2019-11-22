@@ -1,22 +1,25 @@
 <template>
-  <div class="max-w-sm m-auto my-8">
-    <div class="border p-10 border-grey-light shadow rounded">
-      <h3 class="text-2xl mb-6 text-grey-darkest">Sign In</h3>
+  <div class="signin-form-container">
+    <div class="signin-form">
+      <div>
+        <h3 class="signin-header">Sign In</h3>
+      </div>
+      <div>
       <form @submit.prevent="signin">
-        <div class="text-red" v-if="error">{{ error }}</div>
+        <div class="" v-if="error">{{ error }}</div>
 
-        <div class="mb-6">
-          <label for="email" class="label">E-mail Address</label>
+        <div>
+          <label for="email" class="label">E-mail Address</label><br />
           <input
             type="email"
             v-model="email"
             class="input"
             id="email"
-            placeholder="andy@web-crunch.com"
+            placeholder="toluola7@gmail.com"
           />
         </div>
-        <div class="mb-6">
-          <label for="password" class="label">Password</label>
+        <div>
+          <label for="password" class="label">Password</label><br />
           <input
             type="password"
             v-model="password"
@@ -27,14 +30,15 @@
         </div>
         <button
           type="submit"
-          class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center"
+          class="signin-button"
         >Sign In</button>
 
-        <div class="my-4">
+        <div class="link-grey">
           <router-link to="/signup" class="link-grey">Sign up</router-link>
         </div>
       </form>
-    </div>
+      </div>
+      </div>
   </div>
 </template>
 
@@ -83,3 +87,53 @@ export default {
   }
 }
 </script>
+
+<style>
+  .signin-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signin-form {
+    border: #f2f2f2 solid 2px;
+    border-radius: 1px;
+    width: 300px;
+    height: 350px;
+    padding-left: 50px;
+    box-shadow: 1px 1px 1px 1px #edf1f7;
+  }
+
+  .input {
+    width: 250px;
+    padding-left: 10px;
+    margin-bottom: 7px;
+    margin-top: 3px;
+    height: 25px;
+    border: 0px;
+    border-radius: 3px;
+    background: #edf1f7;
+    font-size: 12px;
+  }
+
+  .signin-button {
+    background: #57bd44;
+    border: none;
+    border-radius: 3px;
+    width: 260px;
+    height: 30px;
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+  }
+
+  .link-grey {
+    margin-top: 8px;
+    color: #a3a2a2;
+  }
+
+  .label {
+    font-size: 13px;
+  }
+</style>

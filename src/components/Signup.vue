@@ -1,27 +1,27 @@
 <template>
-  <div class="max-w-sm m-auto my-8">
-    <div class="border p-10 border-grey-light shadow rounded">
-      <h3 class="text-2xl mb-6 text-grey-darkest">Sign Up</h3>
+  <div class="signin-form-container">
+    <div class="signin-form">
+      <h3 class="">Sign Up</h3>
       <form @submit.prevent="signup">
-        <div class="text-red" v-if="error">{{ error }}</div>
+        <div class="" v-if="error">{{ error }}</div>
 
-        <div class="mb-6">
+        <div class="">
           <label for="email" class="label">E-mail Address</label>
           <input type="email" v-model="email" class="input" id="email" placeholder="andy@web-crunch.com">
         </div>
 
-        <div class="mb-6">
-          <label for="password" class="label">Password</label>
+        <div class="">
+          <label for="password" class="label">Password</label><br />
           <input type="password" v-model="password" class="input" id="password" placeholder="Password">
         </div>
 
-        <div class="mb-6">
+        <div class="">
           <label for="password_confirmation" class="label">Password Confirmation</label>
           <input type="password" v-model="password_confirmation" class="input" id="password_confirmation" placeholder="Password Confirmation">
         </div>
-        <button type="submit" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center">Sign Up</button>
+        <button type="submit" class="signin-button">Sign Up</button>
 
-        <div class="my-4"><router-link to="/" class="link-grey">Sign In</router-link></div>
+        <div class="link-grey"><router-link to="/" class="link-grey">Sign In</router-link></div>
       </form>
     </div>
   </div>
