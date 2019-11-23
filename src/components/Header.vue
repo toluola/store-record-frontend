@@ -1,20 +1,21 @@
 <template>
-  <header class="bg-grey-lighter py-4">
-    <div class="container m-auto flex flex-wrap items-center justify-end">
-      <div class="flex-1 flex items-center">
-        <svg class="fill-current text-indigo" viewBox="0 0 24 24" width="24" height="24"><title>record vinyl</title><path d="M23.938 10.773a11.915 11.915 0 0 0-2.333-5.944 12.118 12.118 0 0 0-1.12-1.314A11.962 11.962 0 0 0 12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12c0-.414-.021-.823-.062-1.227zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path></svg>
-
-        <a href="/" class="uppercase text-sm font-mono pl-4 font-semibold no-underline text-indigo-dark hover:text-indigo-darker">Record Store</a>
+  <div class="header-container">
+    <div class="header-subcontainer">
+      <div></div>
+      <div class="header-text">
+        <a href="/" class="header-logo">Record Store</a>
       </div>
-      <div>
-        <router-link to="/" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign in</router-link>
-        <router-link to="/signup" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign Up</router-link>
-        <router-link to="/records" class="link-grey px-2 no-underline" v-if="signedIn()">Records</router-link>
-        <router-link to="/artists" class="link-grey px-2 no-underline" v-if="signedIn()">Artists</router-link>
-        <a href="#" @click.prevent="signOut" class="link-grey px-2 no-underline" v-if="signedIn()">Sign out</a>
+      <div></div>
+      <div class="header-link header-text">
+        <router-link to="/" class="signin-link" v-if="!signedIn()">Sign In</router-link>
+        <router-link to="/signup" class="signup-link" v-if="!signedIn()">Sign Up</router-link>
+        <router-link to="/records" class="record-link" v-if="signedIn()">Records</router-link>
+        <router-link to="/artists" class="artist-link" v-if="signedIn()">Artists</router-link>
+        <a href="#" @click.prevent="signOut" class="signout-link" v-if="signedIn()">Sign Out</a>
       </div>
+      <div></div>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -42,3 +43,41 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .header-container {
+    background: #edf1f7;
+    margin-top: -10px;
+    height: 50px;
+    padding-top: 18px;
+    margin-bottom: 20px;
+    margin-left: -25px;
+    margin-right: -25px;
+  }
+
+  .header-subcontainer {
+    display: grid;
+    background: #edf1f7;
+    grid-template-columns: 10% 15% 50% 15% 10%;
+  }
+
+  .header-text {
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .header-logo {
+    text-decoration: none;
+  }
+
+  .header-link {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-right: -20px;
+  }
+
+  .signup-link, .signin-link, .artist-link , .signout-link {
+    text-decoration: none;
+  }
+
+</style>

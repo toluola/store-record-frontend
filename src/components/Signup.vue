@@ -7,7 +7,7 @@
 
         <div class="">
           <label for="email" class="label">E-mail Address</label>
-          <input type="email" v-model="email" class="input" id="email" placeholder="andy@web-crunch.com">
+          <input type="email" v-model="email" class="input" id="email" placeholder="toluola7@gmail.com">
         </div>
 
         <div class="">
