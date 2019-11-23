@@ -1,19 +1,16 @@
 <template>
   <div class="header-container">
     <div class="header-subcontainer">
-      <div></div>
       <div class="header-text">
-        <a href="/" class="header-logo">Record Store</a>
+        <a href="/" class="header-logo">Record-Store</a>
       </div>
-      <div></div>
       <div class="header-link header-text">
         <router-link to="/" class="signin-link" v-if="!signedIn()">Sign In</router-link>
-        <router-link to="/signup" class="signup-link" v-if="!signedIn()">Sign Up</router-link>
+        <router-link to="/signup" class="signup-link" v-if="!signedIn()">| Sign Up</router-link>
         <router-link to="/records" class="record-link" v-if="signedIn()">Records</router-link>
-        <router-link to="/artists" class="artist-link" v-if="signedIn()">Artists</router-link>
-        <a href="#" @click.prevent="signOut" class="signout-link" v-if="signedIn()">Sign Out</a>
+        <router-link to="/artists" class="artist-link" v-if="signedIn()">| Artists</router-link>
+        <a href="#" @click.prevent="signOut" class="signout-link" v-if="signedIn()">| Sign Out</a>
       </div>
-      <div></div>
     </div>
   </div>
 </template>
@@ -47,22 +44,18 @@ export default {
 <style scoped>
   .header-container {
     background: #edf1f7;
+    height: 60px;
+    padding-left: 250px;
     margin-top: -10px;
-    height: 50px;
-    padding-top: 18px;
+    padding-top: 20px;
+    margin-left: -10px;
+    margin-right: -10px;
     margin-bottom: 20px;
-    margin-left: -25px;
-    margin-right: -25px;
-  }
-
-  .header-subcontainer {
-    display: grid;
-    background: #edf1f7;
-    grid-template-columns: 10% 15% 50% 15% 10%;
   }
 
   .header-text {
-    font-size: 14px;
+    font-size: 20px;
+    display: inline;
     text-decoration: none;
   }
 
@@ -71,13 +64,44 @@ export default {
   }
 
   .header-link {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin-right: -20px;
+    margin-left: 550px;
   }
 
-  .signup-link, .signin-link, .artist-link , .signout-link {
+  .signup-link, .signin-link, .artist-link, .signout-link, .record-link {
     text-decoration: none;
+    color: #551A8B;
+  }
+
+  @media (max-width: 600px) {
+    .header-container {
+      padding-left: 15px;
+      height: 35px;
+      padding-top: 5px;
+    }
+
+    .header-link {
+      margin-left: 20px;
+    }
+
+    .header-text {
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .header-container {
+      padding-left: 45px;
+      padding-top: 12px;
+      height: 40px;
+    }
+
+    .header-link {
+      margin-left: 180px;
+    }
+
+    .header-text {
+      font-size: 20px;
+    }
   }
 
 </style>

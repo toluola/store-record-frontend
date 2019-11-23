@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-md m-auto py-10">
+  <div class="artist-container">
     <div class="text-red" v-if="error">{{ error }}</div>
     <h3 class="font-mono font-regular text-3xl mb-4">Add a new artist</h3>
     <form action="" @submit.prevent="addArtist">
@@ -9,10 +9,8 @@
           placeholder="Type an arist name"
           v-model="newArtist.name" />
       </div>
-      <input type="submit" value="Add Artist" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
+      <input type="submit" value="Add Artist" class="artist-submit" />
     </form>
-
-    <hr class="border border-grey-light my-6" />
 
     <ul class="list-reset mt-4">
       <li class="py-4" v-for="artist in artists" :key="artist.id" :artist="artist">
@@ -23,18 +21,18 @@
             {{ artist.name }}
           </p>
 
-          <button class="bg-tranparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded"
+          <button class="update-button"
           @click.prevent="editArtist(artist)">Edit</button>
 
-          <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
+          <button class="update-button"
           @click.prevent="removeArtist(artist)">Delete</button>
         </div>
 
         <div v-if="artist == editedArtist">
           <form action="" @submit.prevent="updateArtist(artist)">
             <div class="mb-6 p-4 bg-white rounded border border-grey-light mt-4">
-              <input class="input" v-model="artist.name" />
-              <input type="submit" value="Update" class=" my-2 bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 rounded cursor-pointer">
+              <input class="update-input" v-model="artist.name" />
+              <input type="submit" value="Update" class="update-button">
             </div>
           </form>
         </div>
@@ -97,3 +95,57 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.artist-container {
+  margin-left: 600px;
+}
+
+.input {
+  width: 250px;
+  padding-left: 10px;
+  margin-bottom: 7px;
+  margin-top: 3px;
+  height: 25px;
+  border: 0px;
+  border-radius: 3px;
+  background: #edf1f7;
+  font-size: 12px;
+}
+
+.artist-submit {
+  background: #57bd44;
+  border: none;
+  border-radius: 3px;
+  width: 260px;
+  height: 30px;
+  font-size: 15px;
+  color: white;
+  margin-top: 10px;
+}
+
+.update-button {
+  background: #57bd44;
+  border: none;
+  border-radius: 3px;
+  width: 70px;
+  height: 30px;
+  font-size: 15px;
+  color: white;
+  margin-top: 10px;
+}
+
+.update-input {
+  width: 140px;
+  padding-left: 10px;
+  margin-bottom: 7px;
+  margin-top: 3px;
+  height: 25px;
+  border: 0px;
+  border-radius: 3px;
+  background: #edf1f7;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+</style>

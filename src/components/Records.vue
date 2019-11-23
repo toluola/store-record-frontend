@@ -1,7 +1,9 @@
 <template>
-  <div class="max-w-md m-auto py-10">
+  <div class="record-container">
     <div class="text-red" v-if="error">{{ error }}</div>
-    <h3 class="font-mono font-regular text-3xl mb-4">Add a new record</h3>
+    <div class="record-h1">
+      <h3>Add a new record</h3>
+    </div>
 
     <form @submit.prevent="addRecord">
       <div class="mb-6">
@@ -21,7 +23,7 @@
         <input
           type="text"
           id="record_year"
-          class="input"
+          class="input year-input"
           autofocus
           autocomplete="off"
           placeholder="Year"
@@ -34,14 +36,11 @@
           <option disabled value="">Select an artist</option>
           <option :value="artist.id" v-for="artist in artists" :key="artist.id">{{ artist.name }}</option>
         </select>
-        <p class="pt-4">Don't see an artist? <router-link to="/artists" class="link-grey">Create one</router-link></p>
+        <p class="record-create">Don't see an artist? <router-link to="/artists" class="create-link">Create one</router-link></p>
       </div>
 
-      <input type="submit" value="Add Record" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center">
+      <input type="submit" value="Add Record" class="record-submit">
     </form>
-
-    <hr class="border border-grey-light my-6" />
-
     <ul class="list-reset mt-4">
       <li class="py-4" v-for="record in records" :key="record.id" :record="record">
         <div class="flex items-center justify-between flex-wrap">
@@ -53,10 +52,10 @@
           <p class="block font-mono font-semibold">{{ getArtist(record) }}</p>
         </div>
 
-        <button class="bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded"
+        <button class="record-edit"
           @click.prevent="editRecord(record)">Edit</button>
 
-        <button class="bg-transparent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
+        <button class="record-delete"
         @click.prevent="removeRecord(record)">Delete</button>
         </div>
 
@@ -71,17 +70,18 @@
 
               <div class="mb-6">
                 <label class="label">Year</label>
-                <input class="input" v-model="record.year">
+                <input class="input year-input" v-model="record.year">
               </div>
 
               <div class="mb-6">
+                <label for="artist" class="label">Artist</label>
                 <select id="artist_update" class="select" v-model="record.artist">
-                  <option disabled value="">Select an artist</option>
+                  <option disabled value="Select an artist">Select an artist</option>
                   <option :value="artist.id" v-for="artist in artists" :key="artist.id">{{ artist.name }}</option>
                 </select>
               </div>
 
-              <input type="submit" value="Update" class="bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded">
+              <input type="submit" value="Update" class="record-submit">
             </div>
           </form>
         </div>
@@ -156,3 +156,80 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.record-container {
+  margin-left: 550px;
+  margin-right: 550px;
+}
+
+.input {
+  width: 200px;
+  padding-left: 10px;
+  margin-bottom: 7px;
+  margin-top: 3px;
+  height: 25px;
+  border: 0px;
+  border-radius: 3px;
+  background: #edf1f7;
+  font-size: 12px;
+}
+
+.year-input {
+  margin-left: 10px;
+}
+
+.select {
+  width: 200px;
+  background: #edf1f7;
+  border: none;
+}
+
+.record-create {
+  font-size: 15px;
+}
+
+.record-submit {
+  background: #57bd44;
+  border: none;
+  border-radius: 3px;
+  width: 280px;
+  height: 30px;
+  font-size: 15px;
+  color: white;
+  margin-top: 10px;
+}
+
+.create-link {
+  text-decoration: none;
+}
+
+.record-edit, .record-delete {
+  background: #57bd44;
+  border: none;
+  border-radius: 3px;
+  width: 80px;
+  height: 30px;
+  font-size: 15px;
+  color: white;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .record-container {
+    margin-left: 20px;
+  }
+
+  .record-h1 {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .record-container {
+    margin-left: 250px;
+    margin-right: 30px;
+  }
+}
+</style>
